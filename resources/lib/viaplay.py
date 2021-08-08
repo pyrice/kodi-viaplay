@@ -7,7 +7,7 @@ import os
 
 if sys.version_info[0] > 2:
     import http.cookiejar as cookielib
-    import html.parser as HTMLParser
+    import html
 else:
     import cookielib
     import HTMLParser
@@ -367,8 +367,7 @@ class Viaplay(object):
                 except:
                     pass
 
-                htmlparser = HTMLParser.HTMLParser()
-                subtitle = htmlparser.unescape(sami).encode('utf-8')
+                subtitle = html.unescape(sami).encode('utf-8')
                 path = os.path.join(self.tempdir, '{0}.sami'.format(sub_lang))
                 with open(path, 'wb') as subfile:
                     subfile.write(subtitle)
